@@ -293,9 +293,9 @@ export default function WaitlistPage() {
           </div>
 
           {/* H1 Title */}
-          <h1 className="text-[42px] md:text-[56px] font-bold leading-[1.1] text-white max-w-xl">
-            Understand any CS topic <br className="hidden md:block" />
-            <span className="text-[#7B6FD4]">in 60 seconds.</span>
+          <h1 className="text-[42px] md:text-[56px] font-bold leading-[1.1] text-white max-w-2xl">
+            Turn any Computer Science topic <br className="hidden md:block" />
+            <span className="text-[#7B6FD4]">into a personalized visual learning series.</span>
           </h1>
 
           {/* Hero Subtext */}
