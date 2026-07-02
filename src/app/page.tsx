@@ -5,6 +5,10 @@
 import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 
+interface CustomWindow extends Window {
+  particlesJS?: (id: string, config: object) => void;
+}
+
 export default function WaitlistPage() {
   // Form values
   const [email, setEmail] = useState('');
@@ -37,8 +41,10 @@ export default function WaitlistPage() {
 
   // Initialize particles.js library config (Vincent Garreau github layout)
   const initParticles = () => {
-    if (typeof window !== 'undefined' && (window as any).particlesJS) {
-      (window as any).particlesJS('particles-js', {
+    if (typeof window !== 'undefined') {
+      const customWindow = window as unknown as CustomWindow;
+      if (customWindow.particlesJS) {
+        customWindow.particlesJS('particles-js', {
         particles: {
           number: {
             value: 80,
@@ -126,12 +132,16 @@ export default function WaitlistPage() {
         },
         retina_detect: true
       });
+      }
     }
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).particlesJS) {
-      initParticles();
+    if (typeof window !== 'undefined') {
+      const customWindow = window as unknown as CustomWindow;
+      if (customWindow.particlesJS) {
+        initParticles();
+      }
     }
   }, []);
 
